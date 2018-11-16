@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Challenge 4</title>
+    <style>
+     .p {
+         display: none;
+     }
+    .errormsg { 
+    	color:red;
+    	display:block; } 
+    </style>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+    //function checkForm(){
+       //var a = document.getElementById('fullname');
+       //var b = document.getElementById('streetaddr');
+       //if (a.value.length==0){
+           //document.getElementById('nameerrormsg').style.display='block'; a=0;
+       //}else{
+           //document.getElementById('nameerrormsg').style.display='none';
+       //}
+       //if (b.value.length==0){
+           //document.getElementById('addrerrormsg').style.display='block';b=0;
+       //}else{
+           //document.getElementById('addrerrormsg').style.display='none';
+       //}
+       //if(a==0||b==0){
+           //alert('No!')
+           //return false;
+       //}
+    //}  s
+    $(document).ready(function(){
+        $('form').submit(function(){
+            var valid=true;
+            $('form input[type=text]').each(function(){
+                if (!(this.value)){
+                    valid=false;
+                    $(this).next('p'.addClass('errormsg'));
+                }else{
+                    $(this).next('p').addClass('errormsg');
+                }
+            });
+            if (valid==false){
+                event.preventDefault();
+                return false;
+            }
+        })
+    });
+    </script>
+</head>
+<body>
+    <h1>Challenge 4</h1>
+	<form action="">
+        <fieldset>
+        <legend>Personal details</legend>
+          <label for="fullname">Full name: </label>
+            <input type="text" name="fullname" id="fullname">
+            <p class="errormsg">Please enter your name above!</p>
+
+          <label for ="streetaddr"></label>
+            Street Address:
+            <input type="text" name="streetaddr" id="streetaddr">
+            <p class="errormsg">Please enter your street address!</p>
+        </fieldset>
+        <input type="submit" value="Submit it!"> 
+    </form>
+</body>
+</html>
